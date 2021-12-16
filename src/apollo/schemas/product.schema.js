@@ -11,4 +11,8 @@ module.exports = gql`
         getProducts:[Product]
         getProduct(id:ID):Product
     }
+    type Mutation {
+        # createProduct
+        # updateProduct
+    }
 `
