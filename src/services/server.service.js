@@ -3,11 +3,16 @@ const bodyParser = require('body-parser');
 const config = require("../configs");
 const port = config.server.port;
 const apiRouter = require('../routes');
+const { ApolloServer, gql } = require('apollo-server-express');
 
 const app = express();
 
+const graphQlServer = new ApolloServer({
+  // typeDefs -> schemas graphql,
+  // resolvers -> resolvers à importer
+})
+graphQlServer.applyMiddleware({ app, path:'/graphql'})
 app.use(bodyParser.json());
-
 app.use('/api/v1/', apiRouter);
 
 exports.start = () => {
