@@ -4,12 +4,13 @@ const config = require("../configs");
 const port = config.server.port;
 const apiRouter = require('../routes');
 const { ApolloServer, gql } = require('apollo-server-express');
-
+const schemas = require('../apollo/schemas/product.schema');
+const resolvers = require('../apollo/resolvers/product.resolver');
 const app = express();
 
 const graphQlServer = new ApolloServer({
-  // typeDefs -> schemas graphql,
-  // resolvers -> resolvers à importer
+  typeDefs:schemas,
+  resolvers
 })
 graphQlServer.applyMiddleware({ app, path:'/graphql'})
 app.use(bodyParser.json());

@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 module.exports = gql`
     type Product {
         id: ID
-        name: String
+        title: String
         price: Int
         description: String
     }
@@ -12,7 +12,6 @@ module.exports = gql`
         getProduct(id:ID):Product
     }
     type Mutation {
-        # createProduct
-        # updateProduct
+        createProduct(title:String,description: String,price:Int):Product
     }
 `
