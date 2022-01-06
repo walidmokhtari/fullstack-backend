@@ -9,9 +9,9 @@ module.exports = gql`
     }
     type Query {
         getProducts:[Product]
-        getProduct(id:ID):Product
+        getProduct(id:ID):Product!
     }
     type Mutation {
-        createProduct(title:String,description: String,price:Int):Product
+        createProduct(title:String!,description: String,price:Int):Product
     }
 `
