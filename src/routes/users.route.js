@@ -7,5 +7,4 @@ router.get('/get-user',verifyToken ,userController.getUser);
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 
-//Créer route pour l'update d'un client
 module.exports = router;
