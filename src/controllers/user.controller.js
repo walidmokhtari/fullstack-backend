@@ -17,10 +17,19 @@ exports.register = (req, res) => {
 
     user.save()
         .then((data) => {
-            res.send({
-                user: data,
-                isCreated: true
-        })
+            let userToken = jwt.sign({
+                id: data._id,
+                isAdmin: data.isAdmin
+            },
+                configs.jwt.secret,
+                {
+                    expiresIn: 86400
+                }
+            )
+            res.status(200).send({
+                auth: true,
+                token: userToken
+            })
         })
         .catch((err) => {
             res.status(500).send({
