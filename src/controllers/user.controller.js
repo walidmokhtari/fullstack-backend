@@ -88,3 +88,9 @@ exports.updateUser = (req, res) => {
     })
     .catch((err) => res.status(500).json({ err: err }));
 };
+
+exports.verifyToken = (req, res) => {
+    if (req.user) {
+        res.status(200).json({verify:true})
+    }
+}
